@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  	<title>TCDiffusion</title>
+  	<title>TCDiff</title>
     <style>
         body {
             background-color:#ffffff;
@@ -576,11 +576,12 @@
         <div class="image-container">
             <img src="resources/pipline.jpg" alt="Image 2">
             <p>
-                Our framework. We first use the Dance-Beat Navigator to generate dancer 
-                coordinates, and then TCDiff utilizes trajectory information for conditional diffusion 
-                to generate corresponding dance movements. To generate reasonable footwork actions, 
-                our Footwork Adaptor generates corresponding dance movements based on trajectory offsets, 
-                and we take the footstep part as the final footwork result. 
+                Our framework consists of the Dance-Beat Navigator and the Trajectory-Controllable Diffusion(TCDiff). 
+                We start by using the Dance-Beat Navigator to create dancer coordinates. Then, TCDiff utilizes the trajectory for conditional diffusion to produce the corresponding dance movements. 
+                The Dance-Beat Navigator employs an auto-aggressive method to predict future coordinates, utilizing a sliding window approach. The coordinate trajectory is then smoothed via the Savgol filter. 
+                Subsequently, TCDiff employs the smoothed trajectory and other conditions to execute a conditional reverse diffusion process. 
+                During this process, the Fusion Projection enhances group information before the Multi-Dance Transformer. 
+                Lastly, the Footwork Adaptor adjusts the footwork based on the trajectory, resulting in the composition representation.
             <p>
         </div>
     </section>
