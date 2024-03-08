@@ -311,18 +311,15 @@
 
     <section>
         <h2>Abstract</h2>
-        <p>Creating group choreography from music has garnered increasing attention, 
-            holding vast potential in fields such as cultural entertainment and virtual reality. 
-            This endeavor aims to coordinate visually cohesive and diverse group movements. 
-            Despite the growing interest, recent works often face challenges in achieving aesthetically appealing choreography, 
-            primarily due to two key issues: <strong>multi-dancer collision</strong> and <strong>single-dancer foot slide</strong>. 
-            To address these issues, we propose a Trajectory-Controllable Diffusion (TCDiff), 
-            a novel approach that harnesses non-overlapping trajectories to facilitate coherent dance movements. 
-            Specifically, to tackle dancer collisions, we introduce a Dance-Beat Navigator capable of generating trajectories 
-            for multiple dancers based on the music, complemented by a Dancer-distance loss to maintain appropriate spacing among trajectories within a reasonable threshold. 
+        <p>Creating group choreography from music has gained attention in cultural entertainment and virtual reality, aiming to coordinate visually cohesive and diverse group movements.
+            Despite increasing interest, recent works face challenges in achieving aesthetically appealing choreography, primarily for two key issues: <strong>multi-dancer collision</strong> 
+            and <strong>single-dancer foot slide</strong>. To address these issues, we propose a Trajectory-Controllable Diffusion (TCDiff), 
+            a novel approach that harnesses non-overlapping trajectories to facilitate coherent dance movements. Specifically, to tackle dancer collisions, 
+            we introduce a Dance-Beat Navigator capable of generating trajectories for multiple dancers based on the music, 
+            complemented by a Distance-Consistency loss to maintain appropriate spacing among trajectories within a reasonable threshold. 
             To mitigate foot sliding, we present a Footwork Adaptor that utilizes trajectory displacement from adjacent frames to enable flexible footwork, 
-            coupled with a Relative-FK loss to adjust the positioning of individual dancers' root nodes and joints. 
-            Extensive experiments demonstrate that our TCDiff method achieves state-of-the-art results, advancing the capabilities of group choreography generation.
+            coupled with a Relative Forward-Kinematic loss to adjust the positioning of individual dancers' root nodes and joints.
+            Extensive experiments demonstrate that our method achieves state-of-the-art results. 
         </p>
     </section>
 
@@ -562,9 +559,8 @@
         <div class="image-container">
             <img src="resources/Formation_control.jpg" alt="Image 2">
             <p>
-                Our model can utilize user-provided dancer positions for position swap, 
-                producing reasonable and controllable results, and obtaining corresponding footwork movements, 
-                which existing models cannot achieve.
+                Our model leverages user-provided dancer positions to facilitate position swaps, 
+                yielding sensible and manageable outcomes while also generating corresponding footwork movements—a capability beyond the existing models.
             </p>
         </div>
     </section>
@@ -574,12 +570,10 @@
         <div class="image-container">
             <img src="resources/pipline.jpg" alt="Image 2">
             <p>
-                Our framework consists of the Dance-Beat Navigator and the Trajectory-Controllable Diffusion(TCDiff). 
-                We start by using the Dance-Beat Navigator to create dancer coordinates. Then, TCDiff utilizes the trajectory for conditional diffusion to produce the corresponding dance movements. 
-                The Dance-Beat Navigator employs an auto-aggressive method to predict future coordinates, utilizing a sliding window approach. The coordinate trajectory is then smoothed via the Savgol filter. 
-                Subsequently, TCDiff employs the smoothed trajectory and other conditions to execute a conditional reverse diffusion process. 
-                During this process, the Fusion Projection enhances group information before the Multi-Dance Transformer. 
-                Lastly, the Footwork Adaptor adjusts the footwork based on the trajectory, resulting in the composition representation.
+                Our framework consists of two main components: the Dance-Beat Navigator (DBN) and Trajectory-Controllable Diffusion (TCDiff). 
+                To address dancer ambiguity, initially, we employ DBN to model dancer positions, as dancers' coordinates exhibit distinct differences and are less prone to confusion. 
+                Subsequently, TCDiff utilizes this result for conditional diffusion to generate corresponding dance movements. 
+                During this process, a fusion projection enhances group information before inputting it into the multi-dance transformer, while a footwork adaptor adjusts the final footwork.
             <p>
         </div>
     </section>
